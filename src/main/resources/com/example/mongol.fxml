@@ -13,17 +13,14 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1080.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.HamgaalaltController">
    <children>
-      <!-- Background Map -->
       <ImageView fitHeight="600.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="10.0">
          <image>
             <Image url="@../map.jpg" />
          </image>
       </ImageView>
 
-      <!-- Game Canvas -->
       <Canvas fx:id="mapCanvas" height="600.0" width="900.0" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="10.0" />
 
-      <!-- Left Action Buttons -->
       <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="150.0" spacing="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="10.0">
          <children>
             <Button fx:id="btnHarwaac" mnemonicParsing="false" onAction="#harwaac_select" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: black; -fx-border-color: #ffd700; -fx-border-width: 3px; -fx-border-radius: 5px;">
@@ -68,7 +65,6 @@
          </padding>
       </VBox>
 
-      <!-- Gold Section -->
       <ImageView fitHeight="47.0" fitWidth="61.0" layoutX="172.0" layoutY="630.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../gold.jpg" />
@@ -85,7 +81,6 @@
          </font>
       </Label>
 
-      <!-- Life Section -->
       <ImageView fitHeight="47.0" fitWidth="61.0" layoutX="282.0" layoutY="630.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../ami.jpg" />
@@ -102,7 +97,6 @@
          </font>
       </Label>
 
-      <!-- Round Section -->
       <ImageView fitHeight="47.0" fitWidth="61.0" layoutX="382.0" layoutY="630.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../toirog.jpg" />
@@ -119,7 +113,6 @@
          </font>
       </Label>
 
-      <!-- Цэргийн мэдээлэл харуулах хайрцаг (Баруун доод буланд) -->
       <VBox layoutX="500.0" layoutY="625.0" prefHeight="110.0" prefWidth="380.0" spacing="10.0" style="-fx-background-color: #141414; -fx-border-color: #ffd700; -fx-border-width: 2px; -fx-border-radius: 8px;">
          <children>
             <Label fx:id="unitNameLabel" text="Харваач" textFill="#FFD700">
@@ -161,7 +154,6 @@
          </padding>
       </VBox>
 
-      <!-- Эхлэх товчлуур (Анхны чамд байсан яг тэр байршилд) -->
       <Button layoutX="955.0" layoutY="204.0" mnemonicParsing="false" onAction="#Start" prefHeight="124.0" prefWidth="116.0" style="-fx-background-color: black;">
          <graphic>
             <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
@@ -177,7 +169,6 @@
          </font>
       </Label>
 
-      <!-- Дуусгах товчлуур (Анхны чамд байсан яг тэр байршилд) -->
       <Button layoutX="955.0" layoutY="551.0" mnemonicParsing="false" onAction="#end" prefHeight="79.0" prefWidth="104.0" style="-fx-background-color: black;">
          <graphic>
             <ImageView fitHeight="78.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true">

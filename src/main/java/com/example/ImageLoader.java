@@ -5,9 +5,7 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Зурган файлуудыг ачаалж, кэшлэх туслах анги.
- */
+
 public class ImageLoader {
 
     private static final Map<String, Image> cache = new HashMap<>();
@@ -24,7 +22,6 @@ public class ImageLoader {
                     return null;
                 }
 
-                // Дэвсгэр арилгах боловсруулалт хийхгүйгээр шууд эх зургийг уншина
                 return new Image(stream);
             } catch (Exception e) {
                 System.err.println("Зураг ачаалахад алдаа гарлаа: " + name + " — " + e.getMessage());

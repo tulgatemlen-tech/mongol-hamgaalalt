@@ -30,13 +30,11 @@ public class HamgaalaltController {
     @FXML private Label lifeValueLabel;
     @FXML private Label roundValueLabel;
 
-    // Сонгогдсон товчлуурууд
     @FXML private Button btnHarwaac;
     @FXML private Button btnSelemcin;
     @FXML private Button btnMoritHarwaac;
     @FXML private Button btnMoritSelemcin;
 
-    // Мэдээлэл харуулах шошгонууд
     @FXML private Label unitNameLabel;
     @FXML private Label unitCostLabel;
     @FXML private Label unitDamageLabel;
@@ -57,10 +55,10 @@ public class HamgaalaltController {
 
     private int gold = 150;
     private int lives = 20;
-    private int totalKills = 0; // Устгасан дайсны тоо
-    private int totalGoldEarned = 0; // ШИНЭ: Нийт дайсан алж цуглуулсан алт
+    private int totalKills = 0; 
+    private int totalGoldEarned = 0; 
     private boolean gameOver = false;
-    private boolean dialogShown = false; // Диалог цонх олон дахин нээгдэхээс хамгаална
+    private boolean dialogShown = false; 
 
     private String selectedTowerType = "HARWAAC";
 
@@ -232,7 +230,7 @@ public class HamgaalaltController {
             } else if (en.isDead()) {
                 int reward = en.getGoldReward();
                 gold += reward;
-                totalGoldEarned += reward; // ШИНЭ: Алж олсон алтыг нийт дүнд тооцно
+                totalGoldEarned += reward; 
                 totalKills++;
                 toRemove.add(en);
             }
@@ -283,7 +281,7 @@ public class HamgaalaltController {
         gold = 150;
         lives = 20;
         totalKills = 0;
-        totalGoldEarned = 0; // ШИНЭ: Нийт олсон алтыг 0 болгож эхлүүлнэ
+        totalGoldEarned = 0; 
         gameOver = false;
         dialogShown = false;
         waveManager = new WaveManager(path);
@@ -291,7 +289,7 @@ public class HamgaalaltController {
     }
 
     private void handleGameOver() {
-        int finalEarnedGold = this.totalGoldEarned; // ШИНЭ: Нийт дайснаас олсон алт
+        int finalEarnedGold = this.totalGoldEarned; 
         int finalWave = this.waveManager.getWaveNumber();
         int finalKills = this.totalKills;
 
@@ -303,12 +301,10 @@ public class HamgaalaltController {
         content.setPadding(new Insets(20));
         content.setStyle("-fx-background-color: #1a1a1a; -fx-border-color: #ff3333; -fx-border-width: 2px; -fx-border-radius: 8px; -fx-background-radius: 8px;");
 
-        // 1. Гарчиг
         Label titleLabel = new Label("ТОГЛООМ ДУУСЛАА");
         titleLabel.setTextFill(Color.RED);
         titleLabel.setFont(Font.font("System", FontWeight.BOLD, 22));
 
-        // 2. Өөрийн үзүүлэлт
         VBox statsBox = new VBox(5);
         statsBox.setAlignment(Pos.CENTER_LEFT);
         statsBox.setStyle("-fx-background-color: #2a2a2a; -fx-padding: 10px; -fx-background-radius: 5px;");
@@ -321,13 +317,12 @@ public class HamgaalaltController {
         killLabel.setTextFill(Color.LIGHTGREEN);
         killLabel.setFont(Font.font("System", FontWeight.BOLD, 14));
 
-        Label goldLabel = new Label("💰 Цуглуулсан алт: " + finalEarnedGold); // ШИНЭ
+        Label goldLabel = new Label("💰 Цуглуулсан алт: " + finalEarnedGold); 
         goldLabel.setTextFill(Color.YELLOW);
         goldLabel.setFont(Font.font("System", FontWeight.BOLD, 14));
 
         statsBox.getChildren().addAll(waveLabel, killLabel, goldLabel);
 
-        // 3. Нэр оруулах ба Хадгалах хэсэг
         javafx.scene.layout.HBox saveBox = new javafx.scene.layout.HBox(8);
         saveBox.setAlignment(Pos.CENTER);
 
@@ -340,7 +335,6 @@ public class HamgaalaltController {
 
         saveBox.getChildren().addAll(nameInput, saveBtn);
 
-        // 4. Leaderboard (Шилдэг тоглогчдын жагсаалт)
         VBox leaderboardBox = new VBox(5);
         leaderboardBox.setAlignment(Pos.CENTER_LEFT);
         leaderboardBox.setStyle("-fx-background-color: #222222; -fx-padding: 10px; -fx-background-radius: 5px;");
@@ -369,12 +363,10 @@ public class HamgaalaltController {
 
         updateLeaderboardUI.run();
 
-        // Хадгалах товч дарахад
         saveBtn.setOnAction(e -> {
             String name = nameInput.getText().trim();
             if (name.isEmpty()) name = "Player";
 
-            // Нийт цуглуулсан алтыг (finalEarnedGold) бааз руу хадгална
             DatabaseManager.saveScore(name, finalWave, finalEarnedGold);
             saveBtn.setDisable(true);
             nameInput.setDisable(true);
@@ -383,7 +375,6 @@ public class HamgaalaltController {
             updateLeaderboardUI.run();
         });
 
-        // 5. "Дахин эхлэх" болон "Гарах" товчлуурууд
         javafx.scene.layout.HBox actionBox = new javafx.scene.layout.HBox(15);
         actionBox.setAlignment(Pos.CENTER);
 

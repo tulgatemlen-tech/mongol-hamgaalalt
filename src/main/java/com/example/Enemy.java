@@ -24,14 +24,12 @@ public class Enemy {
     private static Image SPRITE;
     private static final double SPRITE_SIZE = 62;
 
-    // Sprite Sheet анимейшны тохиргоо
-    private static final int TOTAL_FRAMES = 3; // Нийт 3 кадр
+    private static final int TOTAL_FRAMES = 3; 
     private double animTimer = 0;
     private int currentFrame = 0;
 
    static {
         try {
-            // ImageLoader-оор дамжуулан зургаа ачаална
             SPRITE = ImageLoader.get("daisan.png");
         } catch (Exception e) {
             e.printStackTrace();
@@ -51,7 +49,6 @@ public class Enemy {
     public void update(double deltaSeconds) {
         if (reachedGoal || dead) return;
 
-        // Анимейшны кадр солих логик (0.15 секунд тутамд 1 кадр шилжинэ)
         animTimer += deltaSeconds;
         if (animTimer >= 0.15) {
             currentFrame = (currentFrame + 1) % TOTAL_FRAMES;
@@ -86,29 +83,24 @@ public class Enemy {
 
     public void render(GraphicsContext gc) {
         if (SPRITE != null && !SPRITE.isError()) {
-            // Эх зургийн 1 кадрийн өргөн ба өндрийг тооцоолох
             double frameWidth = SPRITE.getWidth() / TOTAL_FRAMES;
             double frameHeight = SPRITE.getHeight();
 
-            // Эх зургийн аль хэсгээс (sx, sy) хэдий хэмжээтэй (sw, sh) авахаа заана
             double sx = currentFrame * frameWidth;
             double sy = 0;
 
-            // Canvas дээр хаана (dx, dy), ямар хэмжээтэй (dw, dh) зурахаа заана
             gc.drawImage(
                 SPRITE, 
-                sx, sy, frameWidth, frameHeight, // Эх зургийн тайрах хэсэг
-                x - SPRITE_SIZE / 2, y - SPRITE_SIZE / 2, SPRITE_SIZE, SPRITE_SIZE // Дэлгэц дээр зурах хэмжээ
+                sx, sy, frameWidth, frameHeight, 
+                x - SPRITE_SIZE / 2, y - SPRITE_SIZE / 2, SPRITE_SIZE, SPRITE_SIZE 
             );
         } else {
-            // Fallback: Зураг олдохгүй үед
             gc.setFill(Color.web("#7A2E2E"));
             gc.fillRect(x - 8, y - 10, 16, 20);
             gc.setFill(Color.web("#C0392B"));
             gc.fillOval(x - 10, y - 4, 20, 14);
         }
 
-        // Амьдралын зурвас
         double barWidth = 24;
         double pct = Math.max(0, health / maxHealth);
         gc.setFill(Color.BLACK);
